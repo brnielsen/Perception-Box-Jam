@@ -1,14 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class AngerMonsterController : MonoBehaviour
+public class AngerMonsterController : BulletHellCore
 {
-    [SerializeField] private List<Tendril> tendrils = new List<Tendril>();
 
-    [SerializeField] private float offsetRate = 0.2f;
 
-   
     [ContextMenu("Init")]
     public void BeingAttacking()
     {
@@ -17,11 +14,12 @@ public class AngerMonsterController : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        foreach (Tendril tendril in tendrils)
+        foreach (ProjectileSpawner spawner in projectileSpawners)
         {
-            yield return new WaitForSeconds(offsetRate);
-            tendril.Activate();
+            yield return new WaitForSeconds(fireRate);
+            spawner.Fire();
         }
         yield return null;
     }
+
 }

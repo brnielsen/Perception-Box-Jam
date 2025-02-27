@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Tendril : MonoBehaviour
+public class Tendril : ProjectileBase
 {
-    [SerializeField] private float speed = 10f;
+    
     [SerializeField] private bool isActive = false;
 
-    private void Update()
+    public override void Update()
     {
         if (isActive)
         {
@@ -19,6 +19,11 @@ public class Tendril : MonoBehaviour
 
     }
 
+    public override void Initialize(float speed, float lifeTime, float damage)
+    {
+        base.Initialize(speed, lifeTime, damage);
+        Activate();
+    }
 
     public void Activate()
     {
