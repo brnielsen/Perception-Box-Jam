@@ -156,7 +156,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.4245283, g: 0.37046102, b: 0.37046102, a: 1}
+  m_BackGroundColor: {r: 0.19607845, g: 0.19607845, b: 0.19607845, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rivePanel: {fileID: 2127993241}
-  m_asset: {fileID: -4516626237390682484, guid: 8f277d4b3ca63354ab8bd7de7d887c0f, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: 10f575d8dc2c35244a717e92a754f272, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
   m_fit: 6
