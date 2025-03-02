@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b4a2d64b69b4c0bbdc2f768c08b799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pointerInputMode: 0
+  m_pointerInputMode: 1
   m_displayImage: {fileID: 125299267}
   m_initialRivePanel: {fileID: 125299265}
   m_customMaterial: {fileID: 0}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rivePanel: {fileID: 1332968900}
-  m_asset: {fileID: -4516626237390682484, guid: c778a84da88324f49a08ec1326db5024, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: 8f277d4b3ca63354ab8bd7de7d887c0f, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
   m_fit: 1
