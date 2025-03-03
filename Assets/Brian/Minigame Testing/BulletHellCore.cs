@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Adroit.Utilities;
 using UnityEngine;
 
 public class BulletHellCore : MonoBehaviour
@@ -15,7 +16,8 @@ public class BulletHellCore : MonoBehaviour
 
         public void Fire()
         {
-            GameObject projectileGameObject = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
+            GameObject projectileGameObject = Helpers.InstantiateUIElement(projectilePrefab, spawnPoint);
+            //GameObject projectileGameObject = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
             ProjectileBase projectile = projectileGameObject.GetComponent<ProjectileBase>();
             if (projectile != null)
             {

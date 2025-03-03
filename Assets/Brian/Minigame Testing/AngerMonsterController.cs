@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class AngerMonsterController : BulletHellCore
 {
-
+    void Start()
+    {
+        Debug.Log("Start");
+        Invoke("BeginAttacking", 1f);
+    }
 
     [ContextMenu("Init")]
-    public void BeingAttacking()
+    public void BeginAttacking()
     {
         StartCoroutine(Attack());
     }
