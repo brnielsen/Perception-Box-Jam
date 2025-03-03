@@ -1,13 +1,51 @@
+using System;
 using System.Collections;
-
+using UnityEngine.UI;
 using UnityEngine;
 
 public class AngerMonsterController : BulletHellCore
 {
+    public PlayerBulletHeck playerBulletHeck;
+
+    public Image FadeImage;
     void Start()
     {
         Debug.Log("Start");
+        playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
+        playerBulletHeck.OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
+
+        StartCoroutine(FadeCoroutine(FadeImage, 2f, 0f));
+
         Invoke("BeginAttacking", 1f);
+    }
+
+    private void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
+    {
+       StartCoroutine(EndGame());
+    }
+
+    private IEnumerator EndGame()
+    {
+        yield return FadeCoroutine(FadeImage, 2f, 1f);
+        Debug.Log("Game over");
+        //Return to previous scene logic here
+    }
+
+    public IEnumerator FadeCoroutine(Image image, float fadeDuration, float targetAlpha)
+    {
+        Color color = image.color;
+        float startAlpha = color.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+            image.color = new Color(color.r, color.g, color.b, newAlpha);
+            yield return null;
+        }
+
+        image.color = new Color(color.r, color.g, color.b, targetAlpha);
     }
 
     [ContextMenu("Init")]
@@ -25,5 +63,7 @@ public class AngerMonsterController : BulletHellCore
         }
         yield return null;
     }
+
+
 
 }

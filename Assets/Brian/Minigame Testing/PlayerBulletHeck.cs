@@ -1,9 +1,20 @@
+using System;
 using UnityEngine;
 
 public class PlayerBulletHeck : MonoBehaviour
 {
-    public void OnTriggerEnter2D(Collider2D other)
+    public RectTransform RectTransform;
+
+    public event EventHandler OnPlayerHit;
+
+    void Awake()
     {
-        Debug.Log(other.gameObject.name);
+        RectTransform ??= GetComponent<RectTransform>();
+    }
+
+    public void PlayerHit()
+    {
+        Debug.Log("Player Hit");
+        OnPlayerHit?.Invoke(this, EventArgs.Empty);
     }
 }
