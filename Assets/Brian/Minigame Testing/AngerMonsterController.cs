@@ -7,6 +7,12 @@ public class AngerMonsterController : BulletHellCore
 {
     public PlayerBulletHeck playerBulletHeck;
 
+    public RectTransform rectTransform;
+
+    public float growthRate = 0.5f;
+    public float maxSize = 4f;
+    public float growthStep = 0.1f;
+
     public Image FadeImage;
     void Start()
     {
@@ -15,13 +21,14 @@ public class AngerMonsterController : BulletHellCore
         playerBulletHeck.OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
 
         StartCoroutine(FadeCoroutine(FadeImage, 2f, 0f));
+        StartCoroutine(GrowMonster());
 
         Invoke("BeginAttacking", 1f);
     }
 
     private void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
     {
-       StartCoroutine(EndGame());
+        StartCoroutine(EndGame());
     }
 
     private IEnumerator EndGame()
@@ -64,6 +71,13 @@ public class AngerMonsterController : BulletHellCore
         yield return null;
     }
 
-
+    public IEnumerator GrowMonster()
+    {
+        while (rectTransform.localScale.x < 4)
+        {
+            rectTransform.localScale *= growthStep;
+            yield return new WaitForSeconds(growthRate);
+        }
+    }
 
 }
