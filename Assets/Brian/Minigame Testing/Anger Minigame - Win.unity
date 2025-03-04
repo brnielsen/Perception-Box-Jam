@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rivePanel: {fileID: 427892558}
-  m_asset: {fileID: -4516626237390682484, guid: 7b73abbebe456a840bdbb8b31458a1e2, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: 1004539892d8740499d09e6e5d91999f, type: 3}
   m_artboardName: MC_Idle
   m_stateMachineName: State Machine 1
   m_fit: 0

@@ -90,6 +90,11 @@ public class RiveInputTest : MonoBehaviour
         {
             DoYoga();
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            _idleTrigger.Fire();
+        }
     }
 
     [ContextMenu("Yoga Trigger")]
@@ -104,5 +109,5 @@ public class RiveInputTest : MonoBehaviour
         _strikeTrigger.Fire();
     }
 
-  
+
 }

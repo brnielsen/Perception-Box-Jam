@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.Rendering;
 
 public class AngerMonsterController : BulletHellCore
 {
@@ -13,6 +14,7 @@ public class AngerMonsterController : BulletHellCore
 
     [Header("Gameplay references")]
     public PlayerBulletHeck playerBulletHeck;
+    public int maxHits = 3;
 
     public bool CanWin = false;
 
@@ -30,6 +32,8 @@ public class AngerMonsterController : BulletHellCore
     public Image FadeImageWorldSpace;
     public Image FadeImageScreenSpace;
     public Image FadeImageScreenSpaceWin;
+
+    private int hitCount = 0;
     void Start()
     {
         if (FadeImageScreenSpaceWin != null)
@@ -45,7 +49,25 @@ public class AngerMonsterController : BulletHellCore
 
     private void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
     {
-        StartCoroutine(LoseGame());
+        if (CanWin == true)
+        {
+            TakeHit();
+        }
+        else
+        {
+            StartCoroutine(LoseGame());
+
+        }
+    }
+    
+    [ContextMenu("Take Hit")]
+    private void TakeHit()
+    {
+        hitCount++;
+        if (hitCount >= maxHits)
+        {
+            StartCoroutine(LoseGame());
+        }
     }
 
     private IEnumerator GameOpening()
@@ -77,7 +99,7 @@ public class AngerMonsterController : BulletHellCore
 
     public IEnumerator WinGame()
     {
-        
+
         DialogueLua.SetVariable(_finishedGame, true);
 
         FadeImageScreenSpaceWin.enabled = true;
