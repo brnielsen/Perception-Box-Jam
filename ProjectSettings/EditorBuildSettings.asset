@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Will - Art Assets/Overworld.unity
     guid: e836186952cb5be4a89db0ed2091c913
   - enabled: 1
-    path: Assets/Brian/Minigame Testing/Anger Minigame.unity
+    path: Assets/Brian/Minigame Testing/Anger Minigame - Lose.unity
     guid: 4535e1a20a498334489b347b99a217c7
+  - enabled: 1
+    path: Assets/Brian/Minigame Testing/Anger Minigame - Win.unity
+    guid: a3ae16379f0ea364f90413b5d55c01c9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

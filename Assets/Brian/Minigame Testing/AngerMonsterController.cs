@@ -12,12 +12,15 @@ public class AngerMonsterController : BulletHellCore
 
     public float growthRate = 0.5f;
     public float maxSize = 4f;
+    public float minSize = 0.5f;
     public float growthStep = 0.1f;
 
     public Image FadeImageWorldSpace;
     public Image FadeImageScreenSpace;
+    public Image FadeImageScreenSpaceWin;
     void Start()
     {
+        FadeImageScreenSpaceWin.enabled = false;
         playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
         playerBulletHeck.OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
 
@@ -27,7 +30,7 @@ public class AngerMonsterController : BulletHellCore
 
     private void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
     {
-        StartCoroutine(EndGame());
+        StartCoroutine(LoseGame());
     }
 
     private IEnumerator GameOpening()
@@ -40,12 +43,29 @@ public class AngerMonsterController : BulletHellCore
         //Begin game logic here
     }
 
-    private IEnumerator EndGame()
+    private IEnumerator LoseGame()
     {
-        yield return FadeCoroutine(FadeImageWorldSpace, 2f, 1f);
-        Debug.Log("Game over");
+        if (SceneManager.GetActiveScene().name.Contains("Lose"))
+        {
+            yield return FadeCoroutine(FadeImageWorldSpace, 2f, 1f);
+            Debug.Log("Game over");
+            SceneManager.LoadScene("Overworld");
+        }
+        else
+        {
+            yield return FadeCoroutine(FadeImageWorldSpace, 2f, 1f);
+            Debug.Log("Reset");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+    }
+
+    public IEnumerator WinGame()
+    {
+        FadeImageScreenSpaceWin.enabled = true;
+        yield return FadeCoroutine(FadeImageScreenSpaceWin, 2f, 1f);
+        Debug.Log("Win");
         SceneManager.LoadScene("Overworld");
-        //Return to previous scene logic here
     }
 
     public IEnumerator FadeCoroutine(Image image, float fadeDuration, float targetAlpha)
@@ -83,10 +103,15 @@ public class AngerMonsterController : BulletHellCore
 
     public IEnumerator GrowMonster()
     {
-        while (rectTransform.localScale.x < 4)
+        while (rectTransform.localScale.x < maxSize || rectTransform.localScale.x > minSize)
         {
             rectTransform.localScale *= growthStep;
             yield return new WaitForSeconds(growthRate);
+            
+            if (rectTransform.localScale.x <= minSize)
+            {
+                StartCoroutine(WinGame());
+            }
         }
     }
 
