@@ -1,3 +1,4 @@
+using System;
 using Rive;
 using Rive.Components;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class RiveInputTest : MonoBehaviour
     StateMachine _stateMachine;
     SMITrigger _idleTrigger;
     SMITrigger _runTrigger;
+    SMITrigger _yogaTrigger;
+    SMITrigger _strikeTrigger;
 
     [Header("Movement References")]
     [SerializeField] private RectTransform _playerRectTransform;
@@ -31,8 +34,26 @@ public class RiveInputTest : MonoBehaviour
             {
                 _idleTrigger = _stateMachine.GetTrigger(input.Name);
             }
+
+            if (input.Name == "Strike Trigger")
+            {
+                _strikeTrigger = _stateMachine.GetTrigger(input.Name);
+            }
+
+            if (input.Name == "Yoga Trigger")
+            {
+                _yogaTrigger = _stateMachine.GetTrigger(input.Name);
+            }
         }
 
+        GetComponent<PlayerBulletHeck>().OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
+
+    }
+
+
+    public void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
+    {
+        TakeHit();
     }
 
     void Update()
@@ -42,12 +63,15 @@ public class RiveInputTest : MonoBehaviour
             if (_isRunning == false)
             {
                 _isRunning = true;
-                _idleTrigger.Fire();
+                _runTrigger.Fire();
             }
             _playerRectTransform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * _moveSpeed, 0, 0));
-            if(Input.GetAxisRaw("Horizontal") > 0){
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
                 _playerRectTransform.localScale = new Vector3(-1, 1, 1);
-            }else{
+            }
+            else
+            {
                 _playerRectTransform.localScale = new Vector3(1, 1, 1);
             }
 
@@ -61,12 +85,24 @@ public class RiveInputTest : MonoBehaviour
             }
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DoYoga();
+        }
     }
 
-    [ContextMenu("Run Trigger")]
-    public void SetTrigger()
+    [ContextMenu("Yoga Trigger")]
+    public void DoYoga()
     {
-        SMITrigger sMITrigger = _stateMachine.GetTrigger("RunTrigger");
-        sMITrigger.Fire();
+        _yogaTrigger.Fire();
     }
+
+    [ContextMenu("Hit test")]
+    public void TakeHit()
+    {
+        _strikeTrigger.Fire();
+    }
+
+  
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AngerMonsterController : BulletHellCore
 {
@@ -13,17 +14,15 @@ public class AngerMonsterController : BulletHellCore
     public float maxSize = 4f;
     public float growthStep = 0.1f;
 
-    public Image FadeImage;
+    public Image FadeImageWorldSpace;
+    public Image FadeImageScreenSpace;
     void Start()
     {
-        Debug.Log("Start");
         playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
         playerBulletHeck.OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
 
-        StartCoroutine(FadeCoroutine(FadeImage, 2f, 0f));
-        StartCoroutine(GrowMonster());
+        StartCoroutine(GameOpening());
 
-        Invoke("BeginAttacking", 1f);
     }
 
     private void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
@@ -31,10 +30,21 @@ public class AngerMonsterController : BulletHellCore
         StartCoroutine(EndGame());
     }
 
+    private IEnumerator GameOpening()
+    {
+        yield return FadeCoroutine(FadeImageScreenSpace, 2f, 0f);
+        yield return StartCoroutine(FadeCoroutine(FadeImageWorldSpace, 2f, 0f));
+        StartCoroutine(GrowMonster());
+        BeginAttacking();
+        Debug.Log("Game opening");
+        //Begin game logic here
+    }
+
     private IEnumerator EndGame()
     {
-        yield return FadeCoroutine(FadeImage, 2f, 1f);
+        yield return FadeCoroutine(FadeImageWorldSpace, 2f, 1f);
         Debug.Log("Game over");
+        SceneManager.LoadScene("Overworld");
         //Return to previous scene logic here
     }
 
