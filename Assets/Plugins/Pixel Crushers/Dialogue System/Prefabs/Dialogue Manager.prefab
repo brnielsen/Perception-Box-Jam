@@ -176,11 +176,11 @@ MonoBehaviour:
       cancelConversation:
         key: 27
         buttonName: 
-    dialogueUI: {fileID: 101180, guid: 5ba51781a19f8a843abeb2d304d0d26e, type: 3}
+    dialogueUI: {fileID: 0}
     defaultCanvas: {fileID: 22325660}
     localizationSettings:
       language: 
-      useSystemLanguage: 0
+      useSystemLanguage: 1
       textTable: {fileID: 0}
     subtitleSettings:
       showNPCSubtitlesDuringLine: 1
@@ -190,7 +190,7 @@ MonoBehaviour:
       skipPCSubtitleAfterResponseMenu: 1
       subtitleCharsPerSecond: 30
       minSubtitleSeconds: 2
-      continueButton: 4
+      continueButton: 1
       requireContinueOnLastLine: 0
       richTextEmphases: 1
       informSequenceStartAndEnd: 0
