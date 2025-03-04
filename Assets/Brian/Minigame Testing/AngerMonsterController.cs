@@ -3,24 +3,39 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using PixelCrushers.DialogueSystem;
 
 public class AngerMonsterController : BulletHellCore
 {
+
+    [Header("Dialogue References")]
+    [SerializeField][VariablePopup(true)] private string _finishedGame;
+
+    [Header("Gameplay references")]
     public PlayerBulletHeck playerBulletHeck;
 
+    public bool CanWin = false;
+
     public RectTransform rectTransform;
+
+    [Header("Monster Stats")]
 
     public float growthRate = 0.5f;
     public float maxSize = 4f;
     public float minSize = 0.5f;
     public float growthStep = 0.1f;
 
+    [Header("UI References")]
+
     public Image FadeImageWorldSpace;
     public Image FadeImageScreenSpace;
     public Image FadeImageScreenSpaceWin;
     void Start()
     {
-        FadeImageScreenSpaceWin.enabled = false;
+        if (FadeImageScreenSpaceWin != null)
+        {
+            FadeImageScreenSpaceWin.enabled = false;
+        }
         playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
         playerBulletHeck.OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
 
@@ -62,6 +77,9 @@ public class AngerMonsterController : BulletHellCore
 
     public IEnumerator WinGame()
     {
+        
+        DialogueLua.SetVariable(_finishedGame, true);
+
         FadeImageScreenSpaceWin.enabled = true;
         yield return FadeCoroutine(FadeImageScreenSpaceWin, 2f, 1f);
         Debug.Log("Win");
@@ -107,7 +125,7 @@ public class AngerMonsterController : BulletHellCore
         {
             rectTransform.localScale *= growthStep;
             yield return new WaitForSeconds(growthRate);
-            
+
             if (rectTransform.localScale.x <= minSize)
             {
                 StartCoroutine(WinGame());
