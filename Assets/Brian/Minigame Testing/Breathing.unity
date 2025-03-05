@@ -254,6 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _riveWidget: {fileID: 839632378}
+  _requiredBreaths: 1
+  sceneToLoad: Anger Minigame - Win
 --- !u!1 &839632376
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rivePanel: {fileID: 177921846}
-  m_asset: {fileID: -4516626237390682484, guid: a86f4e7111fc6d34098d660317186b63, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: 6de24a045049ea54ab8278675c90589d, type: 3}
   m_artboardName: MC_Yoga
   m_stateMachineName: State Machine 1
   m_fit: 1
