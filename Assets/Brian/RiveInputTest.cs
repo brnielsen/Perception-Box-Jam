@@ -15,6 +15,7 @@ public class RiveInputTest : MonoBehaviour
     [Header("Movement References")]
     [SerializeField] private RectTransform _playerRectTransform;
     [SerializeField] private float _moveSpeed = 10f;
+    [SerializeField] private bool _canWin;
 
     bool _isRunning;
 
@@ -93,6 +94,10 @@ public class RiveInputTest : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            if (_canWin == false)
+            {
+                return;
+            }
             _idleTrigger.Fire();
         }
     }
@@ -100,6 +105,10 @@ public class RiveInputTest : MonoBehaviour
     [ContextMenu("Yoga Trigger")]
     public void DoYoga()
     {
+        if (_canWin == false)
+        {
+            return;
+        }
         _yogaTrigger.Fire();
     }
 
