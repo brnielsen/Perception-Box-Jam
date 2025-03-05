@@ -12,6 +12,8 @@ public class PlayerBulletHeck : MonoBehaviour
 
     private bool isInvincible = false;
 
+    public bool YogaMode;
+
     void Awake()
     {
         RectTransform ??= GetComponent<RectTransform>();

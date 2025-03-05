@@ -14,14 +14,17 @@ public class RiveInputTest : MonoBehaviour
 
     [Header("Movement References")]
     [SerializeField] private RectTransform _playerRectTransform;
+    [SerializeField] private PlayerBulletHeck _playerBulletHeck;
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private bool _canWin;
+
 
     bool _isRunning;
 
     private void Start()
     {
         _stateMachine = _riveWidget.StateMachine;
+        _playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
 
         foreach (var input in _stateMachine.Inputs())
         {
@@ -65,6 +68,8 @@ public class RiveInputTest : MonoBehaviour
             {
                 _isRunning = true;
                 _runTrigger.Fire();
+                _playerBulletHeck.YogaMode = false;
+
             }
             _playerRectTransform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * _moveSpeed, 0, 0));
             if (Input.GetAxisRaw("Horizontal") > 0)
@@ -83,6 +88,8 @@ public class RiveInputTest : MonoBehaviour
             {
                 _isRunning = false;
                 _idleTrigger.Fire();
+                _playerBulletHeck.YogaMode = false;
+
             }
 
         }
@@ -99,6 +106,8 @@ public class RiveInputTest : MonoBehaviour
                 return;
             }
             _idleTrigger.Fire();
+            _playerBulletHeck.YogaMode = false;
+
         }
     }
 
@@ -110,12 +119,15 @@ public class RiveInputTest : MonoBehaviour
             return;
         }
         _yogaTrigger.Fire();
+        _playerBulletHeck.YogaMode = true;
     }
 
     [ContextMenu("Hit test")]
     public void TakeHit()
     {
         _strikeTrigger.Fire();
+        _playerBulletHeck.YogaMode = false;
+
     }
 
 

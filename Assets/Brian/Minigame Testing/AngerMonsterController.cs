@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.Rendering;
+using Unity.VisualScripting;
 
 public class AngerMonsterController : BulletHellCore
 {
@@ -32,6 +33,7 @@ public class AngerMonsterController : BulletHellCore
     public Image FadeImageWorldSpace;
     public CanvasGroup FadeImageScreenSpace;
     public Image FadeImageScreenSpaceWin;
+    public SpriteRenderer YogaCircle;
     [Header("Scene References")]
     [SerializeField] private string _overworldScene = "Overworld";
     [SerializeField] private string _breathingScene = "Breathing";
@@ -43,12 +45,17 @@ public class AngerMonsterController : BulletHellCore
         {
             FadeImageScreenSpaceWin.enabled = false;
         }
+        if (YogaCircle != null)
+        {
+            YogaCircle.gameObject.SetActive(false);
+        }
         playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
         playerBulletHeck.OnPlayerHit += PlayerBulletHeck_OnPlayerHit;
 
         StartCoroutine(GameOpening());
 
     }
+
 
     private void PlayerBulletHeck_OnPlayerHit(object sender, EventArgs e)
     {
@@ -130,9 +137,9 @@ public class AngerMonsterController : BulletHellCore
         image.color = new Color(color.r, color.g, color.b, targetAlpha);
     }
 
-        public IEnumerator FadeCoroutine(CanvasGroup canvasGroup, float fadeDuration, float targetAlpha)
+    public IEnumerator FadeCoroutine(CanvasGroup canvasGroup, float fadeDuration, float targetAlpha)
     {
-        
+
         float startAlpha = canvasGroup.alpha;
         float elapsedTime = 0f;
 
@@ -165,14 +172,36 @@ public class AngerMonsterController : BulletHellCore
 
     public IEnumerator GrowMonster()
     {
+        if (playerBulletHeck == null)
+        {
+            playerBulletHeck = FindFirstObjectByType<PlayerBulletHeck>();
+        }
+
+        while (playerBulletHeck.YogaMode == false && CanWin == true)
+        {
+            YogaCircle.gameObject.SetActive(false);
+
+            yield return null;
+        }
+
         while (rectTransform.localScale.x < maxSize || rectTransform.localScale.x > minSize)
         {
+            if (YogaCircle != null && YogaCircle.gameObject.activeSelf == false)
+            {
+                YogaCircle.gameObject.SetActive(true);
+            }
             rectTransform.localScale *= growthStep;
             yield return new WaitForSeconds(growthRate);
 
             if (rectTransform.localScale.x <= minSize)
             {
                 StartCoroutine(WinGame());
+            }
+
+            if (playerBulletHeck.YogaMode == false)
+            {
+                StartCoroutine(GrowMonster());
+                yield break;
             }
         }
     }
