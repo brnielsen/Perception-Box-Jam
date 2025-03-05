@@ -30,7 +30,7 @@ public class AngerMonsterController : BulletHellCore
     [Header("UI References")]
 
     public Image FadeImageWorldSpace;
-    public Image FadeImageScreenSpace;
+    public CanvasGroup FadeImageScreenSpace;
     public Image FadeImageScreenSpaceWin;
     [Header("Scene References")]
     [SerializeField] private string _overworldScene = "Overworld";
@@ -128,6 +128,23 @@ public class AngerMonsterController : BulletHellCore
         }
 
         image.color = new Color(color.r, color.g, color.b, targetAlpha);
+    }
+
+        public IEnumerator FadeCoroutine(CanvasGroup canvasGroup, float fadeDuration, float targetAlpha)
+    {
+        
+        float startAlpha = canvasGroup.alpha;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+            canvasGroup.alpha = newAlpha;
+            yield return null;
+        }
+
+        canvasGroup.alpha = targetAlpha;
     }
 
     [ContextMenu("Init")]
