@@ -649,6 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 427892554}
+  IFrames: 1
 --- !u!1 &576471648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1126,9 @@ MonoBehaviour:
     projectileDamage: 10
     spawnPoint: {fileID: 1258885809}
   fireRate: 1
-  _finishedGame: finishedAngerGame
+  _finishedGame: finishedWinableAngerGame
   playerBulletHeck: {fileID: 427892561}
+  maxHits: 3
   CanWin: 1
   rectTransform: {fileID: 1089109137}
   growthRate: 0.1
@@ -1136,6 +1138,8 @@ MonoBehaviour:
   FadeImageWorldSpace: {fileID: 161427769}
   FadeImageScreenSpace: {fileID: 177935350}
   FadeImageScreenSpaceWin: {fileID: 1377384014}
+  _overworldScene: Overworld
+  _breathingScene: Breathing
 --- !u!1 &1157915666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 0}
+  IFrames: 1
 --- !u!61 &2070248364
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _riveWidget: {fileID: 839632378}
-  _requiredBreaths: 1
-  sceneToLoad: Anger Minigame - Win
+  _requiredBreaths: 3
+  sceneToLoad: Overworld
 --- !u!1 &839632376
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,6 +88,8 @@ public class AngerMonsterController : BulletHellCore
         if (SceneManager.GetActiveScene().name.Contains("Lose"))
         {
             yield return FadeCoroutine(FadeImageWorldSpace, 2f, 1f);
+            DialogueLua.SetVariable(_finishedGame, true);
+
             Debug.Log("Game over");
             SceneManager.LoadScene(_breathingScene);
         }

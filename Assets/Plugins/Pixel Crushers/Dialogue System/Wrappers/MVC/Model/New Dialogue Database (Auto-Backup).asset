@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: New Dialogue Database
+  m_Name: New Dialogue Database (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 
   author: 
@@ -99,7 +99,7 @@ MonoBehaviour:
   - id: 2
     fields:
     - title: Name
-      value: finishedLosingAngerGame
+      value: finishedAngerGame
       type: 0
       typeString: 
     - title: Initial Value
@@ -108,20 +108,6 @@ MonoBehaviour:
       typeString: CustomFieldType_Boolean
     - title: Description
       value: Checks if Player has finished 2nd round of anger game
-      type: 0
-      typeString: 
-  - id: 4
-    fields:
-    - title: Name
-      value: finishedWinableAngerGame
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: False
-      type: 2
-      typeString: CustomFieldType_Boolean
-    - title: Description
-      value: 
       type: 0
       typeString: 
   - id: 3
@@ -338,7 +324,7 @@ MonoBehaviour:
         destinationDialogueID: 20
         isConnector: 0
         priority: 2
-      conditionsString: Variable["finishedLosingAngerGame"] == true
+      conditionsString: Variable["finishedAngerGame"] == true
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1386,7 +1372,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: It was good talking to you.  Shall we try again?
+        value: It was good talking to you.  Time to move on?
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
@@ -1395,10 +1381,6 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Sequence
         value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: EventGuid
-        value: 31c5329c-618d-4e8a-8a8f-6924cac70ad9
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1456,10 +1438,6 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
-      - title: EventGuid
-        value: fe657016-4e12-4bc2-a174-32ba1ed57b8e
-        type: 0
-        typeString: CustomFieldType_Text
       conversationID: 1
       isRoot: 0
       isGroup: 0
@@ -1480,8 +1458,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 728.25104, y: 84.56716}
-    canvasZoom: 0.7900002
+    canvasScrollPosition: {x: 131.75552, y: 0}
+    canvasZoom: 0.64000034
   syncInfo:
     syncActors: 0
     syncItems: 0

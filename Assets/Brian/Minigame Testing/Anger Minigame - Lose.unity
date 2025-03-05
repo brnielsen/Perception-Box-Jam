@@ -1104,7 +1104,7 @@ MonoBehaviour:
     projectileDamage: 10
     spawnPoint: {fileID: 1726889922}
   fireRate: 0.3
-  _finishedGame: 
+  _finishedGame: finishedLosingAngerGame
   playerBulletHeck: {fileID: 427892561}
   maxHits: 3
   CanWin: 0
