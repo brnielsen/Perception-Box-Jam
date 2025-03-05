@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using Rive;
 using Rive.Components;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +11,7 @@ public class BreathingGameControls : MonoBehaviour
     [SerializeField] private RiveWidget _riveWidget;
 
     [SerializeField] private int _requiredBreaths = 3;
+    [SerializeField] private TextMeshProUGUI _breathsText;
 
     public string sceneToLoad = "GameScene";
 
@@ -34,11 +37,20 @@ public class BreathingGameControls : MonoBehaviour
         if (@event.Name == "OnBreatheComplete")
         {
             _currentBreaths++;
+            _breathsText.text = $"Breaths: {_currentBreaths}";
+
             if (_currentBreaths >= _requiredBreaths)
             {
-                SceneManager.LoadScene(sceneToLoad);
+                StartCoroutine(EndScene());
             }
         }
+    }
+
+    private IEnumerator EndScene()
+    {
+        _breathsText.text = "Now with a new frame of mind approach Olivia and see what she has to say";
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,5 +76,6 @@ public class BreathingGameControls : MonoBehaviour
         {
             _breatheTrigger.Fire();
         }
+
     }
 }
