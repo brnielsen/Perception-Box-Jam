@@ -32,6 +32,9 @@ public class AngerMonsterController : BulletHellCore
     public Image FadeImageWorldSpace;
     public Image FadeImageScreenSpace;
     public Image FadeImageScreenSpaceWin;
+    [Header("Scene References")]
+    [SerializeField] private string _overworldScene = "Overworld";
+    [SerializeField] private string _breathingScene = "Breathing";
 
     private int hitCount = 0;
     void Start()
@@ -59,7 +62,7 @@ public class AngerMonsterController : BulletHellCore
 
         }
     }
-    
+
     [ContextMenu("Take Hit")]
     private void TakeHit()
     {
@@ -86,7 +89,7 @@ public class AngerMonsterController : BulletHellCore
         {
             yield return FadeCoroutine(FadeImageWorldSpace, 2f, 1f);
             Debug.Log("Game over");
-            SceneManager.LoadScene("Overworld");
+            SceneManager.LoadScene(_breathingScene);
         }
         else
         {
@@ -105,7 +108,7 @@ public class AngerMonsterController : BulletHellCore
         FadeImageScreenSpaceWin.enabled = true;
         yield return FadeCoroutine(FadeImageScreenSpaceWin, 2f, 1f);
         Debug.Log("Win");
-        SceneManager.LoadScene("Overworld");
+        SceneManager.LoadScene(_overworldScene);
     }
 
     public IEnumerator FadeCoroutine(Image image, float fadeDuration, float targetAlpha)

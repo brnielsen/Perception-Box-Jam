@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 427892554}
+  IFrames: 1
 --- !u!1 &576471648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1106,7 @@ MonoBehaviour:
   fireRate: 0.3
   _finishedGame: 
   playerBulletHeck: {fileID: 427892561}
+  maxHits: 3
   CanWin: 0
   rectTransform: {fileID: 1089109137}
   growthRate: 0.1
@@ -1114,6 +1116,8 @@ MonoBehaviour:
   FadeImageWorldSpace: {fileID: 161427769}
   FadeImageScreenSpace: {fileID: 177935350}
   FadeImageScreenSpaceWin: {fileID: 0}
+  _overworldScene: Overworld
+  _breathingScene: Breathing
 --- !u!1 &1157915666
 GameObject:
   m_ObjectHideFlags: 0
