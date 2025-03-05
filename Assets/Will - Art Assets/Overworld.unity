@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
+  _gameCompletedVariable: 
 --- !u!135 &66819582
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1032,6 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 1584695813, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: finishedWinableAngerGame
 --- !u!135 &274461888
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1104,6 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -1914956271, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: finishedWinableAngerGame
 --- !u!135 &589302133
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1143,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 62349385, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: finishedWinableAngerGame
 --- !u!135 &754211845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1303,6 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -1893507868, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &840559160
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1324,6 +1329,32 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.0012157873
   m_Center: {x: 0, y: -0.000000007450581, z: 0.001215791}
+--- !u!1 &850163851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7029375738856917701, guid: e9a322eb3315e2b4c9e16839dea72f9a, type: 3}
+  m_PrefabInstance: {fileID: 2344595694183284609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &850163855
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850163851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.008485126
+  m_Center: {x: 0.00024726387, y: 0, z: 0}
 --- !u!1 &870448984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,6 +1450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -349643864, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &942164503
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1458,6 +1490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -616992317, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: finishedWinableAngerGame
 --- !u!135 &1033045773
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1497,6 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
+  _gameCompletedVariable: 
 --- !u!135 &1055476872
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2019,6 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -1518011483, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1331970179
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2090,6 +2125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -1275224145, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1351350819
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2577,6 +2613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -1317135935, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1450634075
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2616,6 +2653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 1673980239, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1465502289
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2734,6 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 2033539334, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1647767223
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2806,6 +2845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 49476500, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1814866800
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2845,6 +2885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -271643728, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1824555393
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2884,6 +2925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 1581634366, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1875909079
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2923,6 +2965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 2030637343, guid: 5136cccc5ec228743baece710bbf385f, type: 3}
+  _gameCompletedVariable: 
 --- !u!135 &1881392626
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3149,6 +3192,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8785972052324540751, guid: e9a322eb3315e2b4c9e16839dea72f9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1881392625}
+    - targetCorrespondingSourceObject: {fileID: 7029375738856917701, guid: e9a322eb3315e2b4c9e16839dea72f9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 850163855}
     - targetCorrespondingSourceObject: {fileID: 1901777716165838260, guid: e9a322eb3315e2b4c9e16839dea72f9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1033045773}

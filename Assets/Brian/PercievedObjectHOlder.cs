@@ -19,6 +19,11 @@ public class PercievedObjectHOlder : MonoBehaviour
         PickUpObject.OnPickUp += PickupObject_OnPickUp;
     }
 
+    void OnDisable()
+    {
+        PickUpObject.OnPickUp -= PickupObject_OnPickUp;
+    }
+
     private void PickupObject_OnPickUp(object sender, PickUpObject.OnPickUpEventArgs e)
     {
         GameObject imageObject = Instantiate(ImageObjectPrefab, transform);
